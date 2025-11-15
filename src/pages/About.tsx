@@ -95,6 +95,64 @@ const About = () => {
           </div>
         </section>
 
+        {/* Why We Exist */}
+        <section className="py-16 bg-muted">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">Why We Exist</h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Academic integrity is the bedrock of meaningful learning and social trust. When young 
+                people are supported to succeed through skill, perseverance and integrity, communities 
+                benefit from stronger leaders, entrepreneurs and citizens. OBF exists to shift mindsets, 
+                strengthen institutions, and support young people to thrive honestly.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Our Goal */}
+        <section className="py-16 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Goal</h2>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                To end exam malpractice and foster a culture of integrity among Nigeria's young people 
+                while providing them with the skills and support to pursue ethical success.
+              </p>
+              <h3 className="text-2xl font-bold mb-6">Three Core Aims</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                <Card className="border-l-4 border-l-primary">
+                  <CardContent className="p-6">
+                    <h4 className="text-xl font-bold mb-3 text-primary">Change Mindsets</h4>
+                    <p className="text-muted-foreground">
+                      Sensitise schools and communities about the harms of exam malpractice and the 
+                      value of academic honesty.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="border-l-4 border-l-secondary">
+                  <CardContent className="p-6">
+                    <h4 className="text-xl font-bold mb-3 text-secondary">Empower Youth</h4>
+                    <p className="text-muted-foreground">
+                      Deliver life-skills, leadership, and entrepreneurship training so students can 
+                      pursue legitimate paths to success.
+                    </p>
+                  </CardContent>
+                </Card>
+                <Card className="border-l-4 border-l-accent">
+                  <CardContent className="p-6">
+                    <h4 className="text-xl font-bold mb-3 text-accent">Influence Systems</h4>
+                    <p className="text-muted-foreground">
+                      Work with educators, parents, and community leaders to strengthen policies and 
+                      practices that support integrity in education.
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Vision & Mission */}
         <section className="py-16 bg-muted">
           <div className="container mx-auto px-4">
