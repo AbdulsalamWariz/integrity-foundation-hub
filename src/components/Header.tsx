@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 interface HeaderProps {
   onNavClick?: (id: string) => void;
@@ -14,6 +15,7 @@ const Header = ({ onNavClick }: HeaderProps) => {
     { label: "About", id: "about" },
     { label: "Programs", id: "programs" },
     { label: "Support Us", id: "support" },
+    { label: "FAQ", id: "faq" },
     { label: "Contact", id: "contact" },
   ];
 
@@ -32,16 +34,18 @@ const Header = ({ onNavClick }: HeaderProps) => {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-20 items-center justify-between">
           {/* Logo */}
           <button 
             onClick={() => handleNavClick("home")}
             className="flex items-center space-x-2 cursor-pointer hover:opacity-80 transition-opacity"
           >
-            <div className="flex flex-col">
-              <span className="text-xl font-bold text-primary">OBF</span>
-              <span className="text-xs text-muted-foreground">Olorunyomi Babatunde Foundation</span>
-            </div>
+            <img
+              src={logo}
+              alt="Olorunyomi Babatunde Foundation logo"
+              className="h-16 w-16 md:h-20 md:w-20 rounded-sm object-cover"
+            />
+            <span className="">Olorunyomi Babatunde Foundation</span>
           </button>
 
           {/* Desktop Navigation */}

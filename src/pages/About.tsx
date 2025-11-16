@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { GraduationCap, Heart, TrendingUp } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -9,33 +10,42 @@ const About = () => {
       name: "Professor Oyelade Olutunji Sunday",
       role: "Chairman, Board of Trustees",
       bio: "An accomplished entrepreneur and respected community leader with decades of experience in business development and organisational governance. His leadership brings stability, foresight, and strategic guidance to the Foundation.",
+      image: undefined,
     },
     {
       name: "Olorunyomi Emmanuel Babatunde",
       role: "Trustee",
       bio: "An entrepreneur and visionary whose passion for youth development and academic integrity inspired the establishment of OBF. With years of experience in community engagement and business leadership.",
+      image: undefined,
     },
     {
       name: "Ifeoluwa Olaitan Babatunde",
       role: "Treasurer and Trustee",
       bio: "A seasoned accountant with vast experience in financial management and internal controls. She oversees the Foundation's treasury, ensuring transparency, accountability, and compliance with non-profit financial standards.",
+      image: undefined,
     },
     {
       name: "Sikiru Akinyeye Ahmed",
       role: "Trustee",
       bio: "A lecturer and education professional with a strong commitment to youth development and ethical learning environments. His academic background enhances the Foundation's ability to design impactful school-based programmes.",
+      image: undefined,
     },
     {
       name: "Funwape Oyinkansola Motunrayo",
       role: "Trustee",
       bio: "An entrepreneur with a strong background in business operations and community development. She brings innovative thinking and organisational skills to OBF's governance structures and project planning processes.",
+      image: undefined,
     },
     {
       name: "Olalekan Samson Babatunde",
       role: "Secretary, Non-Trustee",
       bio: "An educator with experience in school administration and youth mentoring. As Secretary, he supports the Board by managing documentation, correspondence, and governance processes.",
+      image: undefined,
     },
   ];
+
+  const getAvatarUrl = (name: string) =>
+    `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=0D8ABC&color=fff`;
 
   const sdgs = [
     {
@@ -224,7 +234,56 @@ const About = () => {
           </div>
         </section>
 
-        {/* SDGs */}
+        {/* Board of Trustees */}
+        <section className="py-16 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">
+                Our Board of Trustees
+              </h2>
+              <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
+                The Olorunyomi Babatunde Foundation is guided by a diverse Board of Trustees that brings
+                together experience in education, law, community engagement and youth development. The
+                Board provides strategic oversight, ensures accountability, and steers the Foundation
+                toward impactful programmes and sustainable growth.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {boardMembers.map((member, index) => (
+                  <Card key={index} className="border-none shadow-md hover:shadow-lg transition-shadow">
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <Avatar className="h-16 w-16">
+                          <AvatarImage src={member.image ?? getAvatarUrl(member.name)} alt={member.name} />
+                          <AvatarFallback>
+                            {member.name
+                              .split(" ")
+                              .map((n) => n[0])
+                              .slice(0, 2)
+                              .join("")}
+                          </AvatarFallback>
+                        </Avatar>
+                        <div>
+                          <h3 className="text-xl font-bold mb-1 text-primary">{member.name}</h3>
+                          <p className="text-sm font-semibold text-secondary mb-3">{member.role}</p>
+                          <p className="text-muted-foreground">{member.bio}</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+              <div className="mt-8 p-6 bg-muted rounded-lg">
+                <h3 className="text-lg font-bold mb-2">Governance Statement</h3>
+                <p className="text-muted-foreground">
+                  The Board meets quarterly, approves the annual strategy and budget, and ensures the
+                  Foundation maintains high standards of governance and safeguarding.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* SDGs (moved below Board to match Content.md order) */}
         <section className="py-16 bg-muted">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">
@@ -246,41 +305,6 @@ const About = () => {
                   </CardContent>
                 </Card>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Board of Trustees */}
-        <section className="py-16 bg-background">
-          <div className="container mx-auto px-4">
-            <div className="max-w-6xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">
-                Our Board of Trustees
-              </h2>
-              <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
-                The Olorunyomi Babatunde Foundation is guided by a diverse Board of Trustees that brings
-                together experience in education, law, community engagement and youth development. The
-                Board provides strategic oversight, ensures accountability, and steers the Foundation
-                toward impactful programmes and sustainable growth.
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {boardMembers.map((member, index) => (
-                  <Card key={index} className="border-none shadow-md hover:shadow-lg transition-shadow">
-                    <CardContent className="p-6">
-                      <h3 className="text-xl font-bold mb-1 text-primary">{member.name}</h3>
-                      <p className="text-sm font-semibold text-secondary mb-3">{member.role}</p>
-                      <p className="text-muted-foreground">{member.bio}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-              <div className="mt-8 p-6 bg-muted rounded-lg">
-                <h3 className="text-lg font-bold mb-2">Governance Statement</h3>
-                <p className="text-muted-foreground">
-                  The Board meets quarterly, approves the annual strategy and budget, and ensures the
-                  Foundation maintains high standards of governance and safeguarding.
-                </p>
-              </div>
             </div>
           </div>
         </section>

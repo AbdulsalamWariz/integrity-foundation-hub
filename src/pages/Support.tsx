@@ -32,22 +32,22 @@ const Support = () => {
     {
       question: "Is my donation tax deductible?",
       answer:
-        "Please contact us at info@obf.org for information about tax deductibility in your region.",
+        "[Add local/region tax guidance here if applicable].",
     },
     {
       question: "How do I get a receipt?",
       answer:
-        "After donating on GoFundMe, you'll receive an automated email receipt. For receipts from OBF, email: info@obf.org",
+        "After donating on GoFundMe, you'll receive an automated email receipt. For receipts from OBF, email: contact@obf.org.",
     },
     {
       question: "Can I support OBF in other ways?",
       answer:
-        "Yes! You can volunteer, sponsor a school visit, or partner with us. Contact: info@obf.org",
+        "Yes — volunteer, sponsor a school visit, or partner with us. Contact: contact@obf.org.",
     },
     {
       question: "How can I track the impact of my donation?",
       answer:
-        "We provide regular updates through our newsletter and social media. You can also request a detailed impact report by emailing info@obf.org",
+        "We provide regular updates through our newsletter and social media. You can also request a detailed impact report by emailing info@obf.org.",
     },
   ];
 
@@ -185,8 +185,23 @@ const Support = () => {
           </div>
         </section>
 
-        {/* FAQs */}
-        <section className="py-16 bg-muted">
+        {/* Final CTA */}
+        <section className="py-16 bg-secondary text-secondary-foreground">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Every Gift Makes a Difference</h2>
+            <p className="text-xl mb-8 max-w-2xl mx-auto">
+              Join us in building a future where integrity is the foundation of success
+            </p>
+            <Button variant="donate" size="lg" className="text-lg px-12" asChild>
+              <a href="https://gofundme.com" target="_blank" rel="noopener noreferrer">
+                Donate Now
+              </a>
+            </Button>
+          </div>
+        </section>
+
+        {/* FAQs (moved to be the last section before the footer) */}
+        <section id="faq" className="py-16 bg-muted">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
@@ -203,21 +218,6 @@ const Support = () => {
                 ))}
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* Final CTA */}
-        <section className="py-16 bg-secondary text-secondary-foreground">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Every Gift Makes a Difference</h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto">
-              Join us in building a future where integrity is the foundation of success
-            </p>
-            <Button variant="donate" size="lg" className="text-lg px-12" asChild>
-              <a href="https://gofundme.com" target="_blank" rel="noopener noreferrer">
-                Donate Now
-              </a>
-            </Button>
           </div>
         </section>
       </main>
