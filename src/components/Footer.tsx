@@ -1,7 +1,13 @@
-import { Link } from "react-router-dom";
 import { Facebook, Twitter, Instagram, Mail } from "lucide-react";
 
 const Footer = () => {
+  const handleScrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 py-12">
@@ -19,24 +25,36 @@ const Footer = () => {
             <h3 className="text-lg font-bold">Quick Links</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/about" className="hover:text-secondary transition-colors">
+                <button
+                  onClick={() => handleScrollToSection("about")}
+                  className="hover:text-secondary transition-colors"
+                >
                   About Us
-                </Link>
+                </button>
               </li>
               <li>
-                <Link to="/programs" className="hover:text-secondary transition-colors">
+                <button
+                  onClick={() => handleScrollToSection("programs")}
+                  className="hover:text-secondary transition-colors"
+                >
                   Our Programs
-                </Link>
+                </button>
               </li>
               <li>
-                <Link to="/support" className="hover:text-secondary transition-colors">
+                <button
+                  onClick={() => handleScrollToSection("support")}
+                  className="hover:text-secondary transition-colors"
+                >
                   Support Us
-                </Link>
+                </button>
               </li>
               <li>
-                <Link to="/contact" className="hover:text-secondary transition-colors">
+                <button
+                  onClick={() => handleScrollToSection("contact")}
+                  className="hover:text-secondary transition-colors"
+                >
                   Contact
-                </Link>
+                </button>
               </li>
             </ul>
           </div>
@@ -89,12 +107,18 @@ const Footer = () => {
             © 2025 Olorunyomi Babatunde Foundation. All rights reserved.
           </p>
           <div className="flex gap-4 mt-4 md:mt-0">
-            <Link to="#" className="hover:text-secondary transition-colors">
+            <button
+              onClick={() => handleScrollToSection("home")}
+              className="hover:text-secondary transition-colors"
+            >
               Privacy Policy
-            </Link>
-            <Link to="#" className="hover:text-secondary transition-colors">
+            </button>
+            <button
+              onClick={() => handleScrollToSection("home")}
+              className="hover:text-secondary transition-colors"
+            >
               Terms of Use
-            </Link>
+            </button>
           </div>
         </div>
       </div>

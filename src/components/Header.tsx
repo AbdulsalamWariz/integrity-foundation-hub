@@ -1,51 +1,62 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { cn } from "@/lib/utils";
 
-const Header = () => {
+interface HeaderProps {
+  onNavClick?: (id: string) => void;
+}
+
+const Header = ({ onNavClick }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const location = useLocation();
 
   const navItems = [
-    { label: "Home", path: "/" },
-    { label: "About", path: "/about" },
-    { label: "Programs", path: "/programs" },
-    { label: "Support Us", path: "/support" },
-    { label: "Contact", path: "/contact" },
+    { label: "Home", id: "home" },
+    { label: "About", id: "about" },
+    { label: "Programs", id: "programs" },
+    { label: "Support Us", id: "support" },
+    { label: "Contact", id: "contact" },
   ];
 
-  const isActive = (path: string) => location.pathname === path;
+  const handleNavClick = (id: string) => {
+    if (onNavClick) {
+      onNavClick(id);
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+    setIsMenuOpen(false);
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
+          <button 
+            onClick={() => handleNavClick("home")}
+            className="flex items-center space-x-2 cursor-pointer hover:opacity-80 transition-opacity"
+          >
             <div className="flex flex-col">
               <span className="text-xl font-bold text-primary">OBF</span>
               <span className="text-xs text-muted-foreground">Olorunyomi Babatunde Foundation</span>
             </div>
-          </Link>
+          </button>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary",
-                  isActive(item.path) ? "text-primary" : "text-muted-foreground"
-                )}
+              <button
+                key={item.id}
+                onClick={() => handleNavClick(item.id)}
+                className="text-sm font-medium transition-colors hover:text-primary text-muted-foreground"
               >
                 {item.label}
-              </Link>
+              </button>
             ))}
-            <Button variant="donate" size="sm" asChild>
-              <Link to="/support">Donate Now</Link>
+            <Button variant="donate" size="sm" onClick={() => handleNavClick("support")}>
+              Donate Now
             </Button>
           </nav>
 
@@ -67,20 +78,16 @@ const Header = () => {
         {isMenuOpen && (
           <nav className="md:hidden border-t border-border py-4 space-y-3">
             {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                onClick={() => setIsMenuOpen(false)}
-                className={cn(
-                  "block py-2 text-sm font-medium transition-colors",
-                  isActive(item.path) ? "text-primary" : "text-muted-foreground"
-                )}
+              <button
+                key={item.id}
+                onClick={() => handleNavClick(item.id)}
+                className="block w-full text-left py-2 text-sm font-medium transition-colors text-muted-foreground hover:text-primary"
               >
                 {item.label}
-              </Link>
+              </button>
             ))}
-            <Button variant="donate" size="sm" className="w-full" asChild>
-              <Link to="/support">Donate Now</Link>
+            <Button variant="donate" size="sm" className="w-full" onClick={() => handleNavClick("support")}>
+              Donate Now
             </Button>
           </nav>
         )}
