@@ -12,3 +12,4 @@ Allow: /
 
 User-agent: *
 Allow: /
+Sitemap: https://obf-gules.vercel.app/sitemap.xml
