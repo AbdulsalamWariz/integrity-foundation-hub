@@ -13,6 +13,13 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import heroImage from "@/assets/hero-students.jpg";
+import mrsBabatunde from "@/assets/mrs-babatunde.png";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
 
 const Home = () => {
   const scrollToSection = (id: string) => {
@@ -60,7 +67,7 @@ const Home = () => {
       name: "Ifeoluwa Olaitan Babatunde",
       role: "Treasurer and Trustee",
       bio: "A seasoned accountant with vast experience in financial management and internal controls. She oversees the Foundation's treasury, ensuring transparency, accountability, and compliance with non-profit financial standards.",
-      image: undefined,
+      image: mrsBabatunde,
     },
     {
       name: "Sikiru Akinyeye Ahmed",
@@ -270,24 +277,34 @@ const Home = () => {
         <section id="aims-detailed" className="py-16 bg-muted">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Aims and Objectives (Detailed)</h2>
-              <ul className="space-y-6 text-lg text-muted-foreground">
-                <li>
-                  <span className="font-semibold text-foreground">Promote academic honesty and integrity:</span> Through sensitization campaigns,
-                  school outreach programmes and value-based education, we work to change mindsets and
-                  discourage exam malpractice among adolescents and young people.
-                </li>
-                <li>
-                  <span className="font-semibold text-foreground">Empower youth with skills and alternatives:</span> We deliver life skills, ethical
-                  leadership training, and entrepreneurship support that reduce reliance on dishonest
-                  academic shortcuts and encourage responsible citizenship.
-                </li>
-                <li>
-                  <span className="font-semibold text-foreground">Engage stakeholders for systemic reform:</span> We collaborate with educators, parents,
-                  religious and community leaders to strengthen ethical standards in educational
-                  institutions and support community-led integrity movements.
-                </li>
-              </ul>
+              <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Aims and Objectives</h2>
+              {/* Collapsible details */}
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="aims-detailed">
+                  <AccordionTrigger className="text-lg">
+                    Click to read the detailed objectives
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <ul className="space-y-6 text-lg text-muted-foreground">
+                      <li>
+                        <span className="font-semibold text-foreground">Promote academic honesty and integrity:</span> Through sensitization campaigns,
+                        school outreach programmes and value-based education, we work to change mindsets and
+                        discourage exam malpractice among adolescents and young people.
+                      </li>
+                      <li>
+                        <span className="font-semibold text-foreground">Empower youth with skills and alternatives:</span> We deliver life skills, ethical
+                        leadership training, and entrepreneurship support that reduce reliance on dishonest
+                        academic shortcuts and encourage responsible citizenship.
+                      </li>
+                      <li>
+                        <span className="font-semibold text-foreground">Engage stakeholders for systemic reform:</span> We collaborate with educators, parents,
+                        religious and community leaders to strengthen ethical standards in educational
+                        institutions and support community-led integrity movements.
+                      </li>
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             </div>
           </div>
         </section>
@@ -303,30 +320,42 @@ const Home = () => {
                 high standards of governance and safeguarding.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              {boardMembers.map((member, index) => (
-                <Card key={index} className="border-none shadow-md hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <Avatar className="h-16 w-16">
-                        <AvatarImage src={member.image ?? getAvatarUrl(member.name)} alt={member.name} />
-                        <AvatarFallback>
-                          {member.name
-                            .split(" ")
-                            .map((n) => n[0])
-                            .slice(0, 2)
-                            .join("")}
-                        </AvatarFallback>
-                      </Avatar>
-                      <div>
-                        <h3 className="text-lg font-bold text-primary mb-1">{member.name}</h3>
-                        <p className="text-sm text-secondary font-semibold mb-3">{member.role}</p>
-                        <p className="text-sm text-muted-foreground leading-relaxed">{member.bio}</p>
-                      </div>
+            {/* Collapsible trustee profiles */}
+            <div className="max-w-5xl mx-auto">
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="trustees">
+                  <AccordionTrigger className="text-lg">
+                    Click to view the Trustee profiles
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      {boardMembers.map((member, index) => (
+                        <Card key={index} className="border-none shadow-md hover:shadow-lg transition-shadow">
+                          <CardContent className="p-6">
+                            <div className="flex items-start gap-4">
+                              <Avatar className="h-16 w-16">
+                                <AvatarImage src={member.image ?? getAvatarUrl(member.name)} alt={member.name} />
+                                <AvatarFallback>
+                                  {member.name
+                                    .split(" ")
+                                    .map((n) => n[0])
+                                    .slice(0, 2)
+                                    .join("")}
+                                </AvatarFallback>
+                              </Avatar>
+                              <div>
+                                <h3 className="text-lg font-bold text-primary mb-1">{member.name}</h3>
+                                <p className="text-sm text-secondary font-semibold mb-3">{member.role}</p>
+                                <p className="text-sm text-muted-foreground leading-relaxed">{member.bio}</p>
+                              </div>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      ))}
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             </div>
           </div>
         </section>
@@ -335,19 +364,29 @@ const Home = () => {
         <section id="sdg" className="py-16 bg-muted">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">OUR SUSTAINABLE DEVELOPMENT GOALS (SDGs)</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {sdgs.map((sdg, index) => (
-                <Card key={index} className="border-none shadow-md hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6 text-center">
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-secondary/10 mb-4">
-                      <sdg.icon className="h-8 w-8 text-secondary" />
-                    </div>
-                    <h3 className="text-lg font-bold mb-3 text-foreground">{sdg.title}</h3>
-                    <p className="text-sm text-muted-foreground">{sdg.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+            {/* Collapsible SDGs */}
+            <Accordion type="single" collapsible className="w-full max-w-5xl mx-auto">
+              <AccordionItem value="sdgs">
+                <AccordionTrigger className="text-lg">
+                  Click to view our SDG alignment
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {sdgs.map((sdg, index) => (
+                      <Card key={index} className="border-none shadow-md hover:shadow-lg transition-shadow">
+                        <CardContent className="p-6 text-center">
+                          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-secondary/10 mb-4">
+                            <sdg.icon className="h-8 w-8 text-secondary" />
+                          </div>
+                          <h3 className="text-lg font-bold mb-3 text-foreground">{sdg.title}</h3>
+                          <p className="text-sm text-muted-foreground">{sdg.description}</p>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
         </section>
 
@@ -386,23 +425,29 @@ const Home = () => {
               {/* How your gift will be used: */}
               <div>
                 <h3 className="text-2xl font-bold mb-8 text-center">How your gift will be used:</h3>
-                <div className="space-y-4">
+                <Accordion type="single" collapsible className="w-full">
                   {fundAllocation.map((fund, index) => (
-                    <div key={index}>
-                      <div className="flex justify-between mb-2">
-                        <span className="font-semibold">{fund.category}</span>
-                        <span className="font-bold text-secondary">{fund.percentage}%</span>
-                      </div>
-                      <div className="w-full bg-white/20 rounded-full h-3 overflow-hidden">
-                        <div
-                          className="bg-secondary h-full rounded-full transition-all"
-                          style={{ width: `${fund.percentage}%` }}
-                        />
-                      </div>
-                      <p className="text-sm text-primary-foreground/80 mt-1">{fund.description}</p>
-                    </div>
+                    <AccordionItem key={index} value={`fund-${index}`}>
+                      <AccordionTrigger className="text-base hover:no-underline">
+                        <div className="flex justify-between w-full items-center">
+                          <span className="font-semibold">{fund.category}</span>
+                          <span className="font-bold text-secondary ml-4">{fund.percentage}%</span>
+                        </div>
+                      </AccordionTrigger>
+                      <AccordionContent>
+                        <div className="space-y-3 mt-4">
+                          <div className="w-full bg-white/20 rounded-full h-3 overflow-hidden">
+                            <div
+                              className="bg-secondary h-full rounded-full transition-all"
+                              style={{ width: `${fund.percentage}%` }}
+                            />
+                          </div>
+                          <p className="text-sm text-primary-foreground/80">{fund.description}</p>
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
                   ))}
-                </div>
+                </Accordion>
               </div>
             </div>
           </div>
@@ -415,16 +460,18 @@ const Home = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Frequently Asked Questions</h2>
-              <div className="space-y-4">
+              <Accordion type="single" collapsible className="w-full">
                 {faqs.map((faq, index) => (
-                  <Card key={index} className="border-none shadow-md">
-                    <CardContent className="p-6">
-                      <h3 className="text-lg font-bold mb-2 text-primary">{faq.question}</h3>
+                  <AccordionItem key={index} value={`faq-${index}`}>
+                    <AccordionTrigger className="text-base">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent>
                       <p className="text-muted-foreground">{faq.answer}</p>
-                    </CardContent>
-                  </Card>
+                    </AccordionContent>
+                  </AccordionItem>
                 ))}
-              </div>
+              </Accordion>
             </div>
           </div>
         </section>
