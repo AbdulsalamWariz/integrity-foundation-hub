@@ -1,5 +1,11 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { 
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { DollarSign, PieChart, Shield, TrendingUp } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
