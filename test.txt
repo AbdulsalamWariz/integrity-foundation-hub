@@ -1,0 +1,54 @@
+The page Is just blank fix that, this is the error in the console: 
+
+Home.tsx:33 Uncaught TypeError: useLocation is not a function
+    at Home (Home.tsx:33:20)
+    at renderWithHooks (chunk-T2SWDQEL.js?v=5cad12b9:11548:26)
+    at mountIndeterminateComponent (chunk-T2SWDQEL.js?v=5cad12b9:14926:21)
+    at beginWork (chunk-T2SWDQEL.js?v=5cad12b9:15914:22)
+    at HTMLUnknownElement.callCallback2 (chunk-T2SWDQEL.js?v=5cad12b9:3674:22)
+    at Object.invokeGuardedCallbackDev (chunk-T2SWDQEL.js?v=5cad12b9:3699:24)
+    at invokeGuardedCallback (chunk-T2SWDQEL.js?v=5cad12b9:3733:39)
+    at beginWork$1 (chunk-T2SWDQEL.js?v=5cad12b9:19765:15)
+    at performUnitOfWork (chunk-T2SWDQEL.js?v=5cad12b9:19198:20)
+    at workLoopSync (chunk-T2SWDQEL.js?v=5cad12b9:19137:13)
+Home.tsx:33 Uncaught TypeError: useLocation is not a function
+    at Home (Home.tsx:33:20)
+    at renderWithHooks (chunk-T2SWDQEL.js?v=5cad12b9:11548:26)
+    at mountIndeterminateComponent (chunk-T2SWDQEL.js?v=5cad12b9:14926:21)
+    at beginWork (chunk-T2SWDQEL.js?v=5cad12b9:15914:22)
+    at HTMLUnknownElement.callCallback2 (chunk-T2SWDQEL.js?v=5cad12b9:3674:22)
+    at Object.invokeGuardedCallbackDev (chunk-T2SWDQEL.js?v=5cad12b9:3699:24)
+    at invokeGuardedCallback (chunk-T2SWDQEL.js?v=5cad12b9:3733:39)
+    at beginWork$1 (chunk-T2SWDQEL.js?v=5cad12b9:19765:15)
+    at performUnitOfWork (chunk-T2SWDQEL.js?v=5cad12b9:19198:20)
+    at workLoopSync (chunk-T2SWDQEL.js?v=5cad12b9:19137:13)
+installHook.js:1 The above error occurred in the <Home> component:
+
+    at Home (http://localhost:8080/src/pages/Home.tsx?t=1763464311333:42:22)
+    at RenderedRoute (http://localhost:8080/node_modules/.vite/deps/react-router-dom.js?v=5cad12b9:4088:5)
+    at Routes (http://localhost:8080/node_modules/.vite/deps/react-router-dom.js?v=5cad12b9:4558:5)
+    at Router (http://localhost:8080/node_modules/.vite/deps/react-router-dom.js?v=5cad12b9:4501:15)
+    at BrowserRouter (http://localhost:8080/node_modules/.vite/deps/react-router-dom.js?v=5cad12b9:5247:5)
+    at Provider (http://localhost:8080/node_modules/.vite/deps/chunk-MQ4H5XBH.js?v=5cad12b9:44:15)
+    at TooltipProvider (http://localhost:8080/node_modules/.vite/deps/@radix-ui_react-tooltip.js?v=5cad12b9:2280:5)
+    at QueryClientProvider (http://localhost:8080/node_modules/.vite/deps/@tanstack_react-query.js?v=5cad12b9:2934:3)
+    at App
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+overrideMethod @ installHook.js:1
+chunk-T2SWDQEL.js?v=5cad12b9:19413 Uncaught TypeError: useLocation is not a function
+    at Home (Home.tsx:33:20)
+    at renderWithHooks (chunk-T2SWDQEL.js?v=5cad12b9:11548:26)
+    at mountIndeterminateComponent (chunk-T2SWDQEL.js?v=5cad12b9:14926:21)
+    at beginWork (chunk-T2SWDQEL.js?v=5cad12b9:15914:22)
+    at beginWork$1 (chunk-T2SWDQEL.js?v=5cad12b9:19753:22)
+    at performUnitOfWork (chunk-T2SWDQEL.js?v=5cad12b9:19198:20)
+    at workLoopSync (chunk-T2SWDQEL.js?v=5cad12b9:19137:13)
+    at renderRootSync (chunk-T2SWDQEL.js?v=5cad12b9:19116:15)
+    at recoverFromConcurrentError (chunk-T2SWDQEL.js?v=5cad12b9:18736:28)
+    at performConcurrentWorkOnRoot (chunk-T2SWDQEL.js?v=5cad12b9:18684:30)
+
+
+
+and please use react router (I already installed it)

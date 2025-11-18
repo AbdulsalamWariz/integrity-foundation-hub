@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import Header from "@/components/Header";
+import { useLocation, useEffect } from "react";
 import Footer from "@/components/Footer";
 import heroImage from "@/assets/hero-students.jpg";
 import mrsBabatunde from "@/assets/mrs-babatunde.png";
@@ -28,6 +29,25 @@ const Home = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  const location = useLocation();
+  useEffect(() => {
+    const state = (location && (location as any).state) || {};
+    const target = state?.scrollTo;
+    if (target && typeof target === "string") {
+      // small timeout to allow the page to render
+      setTimeout(() => {
+        scrollToSection(target);
+        // clear the state so repeated visits don't auto-scroll
+        // replace history state without scroll info
+        try {
+          window.history.replaceState({}, document.title, window.location.pathname + window.location.search);
+        } catch (e) {
+          // ignore
+        }
+      }, 120);
+    }
+  }, [location]);
 
   const coreAims = [
     {
@@ -158,6 +178,7 @@ const Home = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header onNavClick={scrollToSection} />
+      {/* Scroll to section when navigated with state (e.g., from other routes) */}
       <main className="flex-1">
         {/* HERO: Restored as the first visible section */}
         <section id="home" className="relative h-[600px] flex items-center justify-center overflow-hidden">

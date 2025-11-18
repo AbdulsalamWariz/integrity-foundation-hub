@@ -1,4 +1,5 @@
 import { Facebook, Twitter, Instagram, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const handleScrollToSection = (id: string) => {
@@ -32,14 +33,7 @@ const Footer = () => {
                   About Us
                 </button>
               </li>
-              <li>
-                <button
-                  onClick={() => handleScrollToSection("programs")}
-                  className="hover:text-secondary transition-colors"
-                >
-                  Our Programs
-                </button>
-              </li>
+              {/* Programs link removed as requested */}
               <li>
                 <button
                   onClick={() => handleScrollToSection("support")}
@@ -49,13 +43,16 @@ const Footer = () => {
                 </button>
               </li>
               <li>
-                <button
-                  onClick={() => handleScrollToSection("contact")}
-                  className="hover:text-secondary transition-colors"
-                >
-                  Contact
-                </button>
+                <Link to="/editorial" className="hover:text-secondary transition-colors">
+                  Editorial
+                </Link>
               </li>
+              <li>
+                <Link to="/projects" className="hover:text-secondary transition-colors">
+                  Our Projects
+                </Link>
+              </li>
+              {/* Contact link removed as requested */}
             </ul>
           </div>
 

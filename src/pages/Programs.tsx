@@ -160,12 +160,12 @@ const Programs = () => {
                   >
                     Support Our Programs
                   </a>
-                  <a
-                    href="/contact"
-                    className="inline-flex items-center justify-center bg-secondary text-secondary-foreground hover:bg-secondary-dark h-11 px-8 rounded-md font-semibold transition-all"
-                  >
-                    Partner With Us
-                  </a>
+                    <a
+                      href="/support"
+                      className="inline-flex items-center justify-center bg-secondary text-secondary-foreground hover:bg-secondary-dark h-11 px-8 rounded-md font-semibold transition-all"
+                    >
+                      Partner With Us
+                    </a>
                 </div>
               </CardContent>
             </Card>
