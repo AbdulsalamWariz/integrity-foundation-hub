@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Analytics } from "@vercel/analytics/react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Editorial from "./pages/Editorial";
+import Editorial from "./pages/EditorialClean";
 import EditorialArticle from "./pages/EditorialArticle";
 import Projects from "./pages/Projects";
 

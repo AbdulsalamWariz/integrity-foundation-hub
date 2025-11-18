@@ -11,7 +11,8 @@ import {
 } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import Header from "@/components/Header";
-import { useLocation, useEffect } from "react";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Footer from "@/components/Footer";
 import heroImage from "@/assets/hero-students.jpg";
 import mrsBabatunde from "@/assets/mrs-babatunde.png";

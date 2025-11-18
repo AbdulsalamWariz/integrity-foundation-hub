@@ -3,7 +3,6 @@ import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { client } from "@/sanity/client";
 import Header from "@/components/Header";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
 // Minimal Portable Text renderer for common blocks/marks
@@ -23,7 +22,7 @@ function renderPortableText(blocks: any): React.ReactNode {
         return <React.Fragment key={idx}>{text}</React.Fragment>;
       });
       return (
-        <p key={i} className="mb-3">
+        <p key={i} className="mb-3 sm:mb-4 text-sm sm:text-base break-words overflow-hidden leading-relaxed">
           {children}
         </p>
       );
@@ -33,7 +32,7 @@ function renderPortableText(blocks: any): React.ReactNode {
       const url = block.asset?._ref ? undefined : block.asset?.url || block.url;
       // If asset ref is present, Sanity returns object refs; for simplicity try asset.url
       return (
-        <img key={i} src={url} alt={block.alt || ""} className="my-4 w-full rounded-md" />
+        <img key={i} src={url} alt={block.alt || ""} className="my-3 sm:my-4 w-full h-auto rounded-md object-cover max-w-full" />
       );
     }
 
@@ -65,37 +64,33 @@ const EditorialArticle: React.FC = () => {
   });
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground w-full overflow-x-hidden">
       <Header />
-      <main className="container mx-auto px-4 py-12">
-        <div className="mb-6">
-          <Link to="/editorial" className="text-sm text-muted-foreground hover:underline">← Back to Editorial</Link>
+      <main className="px-3 sm:px-4 py-6 sm:py-12 w-full">
+        <div className="max-w-3xl mx-auto w-full mb-4 sm:mb-6 px-0">
+          <Link to="/editorial" className="text-xs sm:text-sm text-muted-foreground hover:underline inline-block break-words">← Back to Editorial</Link>
         </div>
 
         {isLoading && <p className="text-muted-foreground">Loading…</p>}
         {isError && <p className="text-destructive">Failed to load article.</p>}
 
         {data && (
-          <Card className="border-none shadow-lg">
-            <CardContent className="p-6">
-              <h1 className="text-2xl font-bold mb-2">{data.title}</h1>
-              <p className="text-sm text-muted-foreground">{data.publishedAt?.slice(0,10)}</p>
-              {data.mainImage?.asset?.url && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={data.mainImage.asset.url} alt={data.title} className="mt-4 w-full rounded-md" />
-              )}
+          <div className="max-w-3xl mx-auto w-full px-0">
+            <Card className="border-none shadow-lg w-full">
+              <CardContent className="p-4 sm:p-6 w-full overflow-hidden">
+                <h1 className="text-lg sm:text-2xl lg:text-3xl font-bold mb-2 break-words">{data.title}</h1>
+                <p className="text-xs sm:text-sm text-muted-foreground">{data.publishedAt?.slice(0,10)}</p>
+                {data.mainImage?.asset?.url && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={data.mainImage.asset.url} alt={data.title} className="mt-4 sm:mt-6 w-full h-auto rounded-md object-cover" />
+                )}
 
-              <div className="mt-6 text-muted-foreground">
-                {renderPortableText(data.body)}
-              </div>
-
-              <div className="mt-6">
-                <Button asChild>
-                  <a href="mailto:?subject=Interesting article&body=I thought you'd like this article: " className="text-sm">Share via Email</a>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+                <div className="mt-4 sm:mt-6 text-sm sm:text-base text-muted-foreground break-words overflow-hidden">
+                  {renderPortableText(data.body)}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         )}
       </main>
     </div>
