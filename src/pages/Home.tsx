@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { 
-  Target, 
-  Users, 
-  Building2, 
-  GraduationCap, 
-  Heart, 
+import {
+  Target,
+  Users,
+  Building2,
+  GraduationCap,
+  Heart,
   TrendingUp,
   DollarSign,
 } from "lucide-react";
@@ -22,6 +22,13 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+
+import professorOyeladeImg from "@/assets/professor-oyelade-olutunji.png";
+import olorunyomiImg from "@/assets/olorunyomi-emmanuel-babatunde.png";
+import ifeoluwaImg from "@/assets/ifeoluwa-olaitan-babatunde.png";
+import sikiruImg from "@/assets/sikiru-akinyeye-ahmed.png";
+import funwapeImg from "@/assets/funwape-oyinkansola-motunrayo.png";
+import olalekanImg from "@/assets/olalekan-samson-babatunde.png";
 
 const Home = () => {
   const scrollToSection = (id: string) => {
@@ -75,38 +82,38 @@ const Home = () => {
     {
       name: "Professor Oyelade Olutunji Sunday",
       role: "Chairman, Board of Trustees",
-      bio: "An accomplished entrepreneur and respected community leader with decades of experience in business development and organisational governance. His leadership brings stability, foresight, and strategic guidance to the Foundation.",
-      image: undefined,
+      bio: "He is a distinguished Lawyer, accomplished entrepreneur, and respected community leader with decades of experience in business development and organisational governance. His leadership brings stability, foresight, and strategic guidance to the Foundation. He plays a central role in steering OBF’s mission to promote academic integrity and youth empowerment across communities.",
+      image: professorOyeladeImg,
     },
     {
       name: "Olorunyomi Emmanuel Babatunde",
       role: "Trustee",
-      bio: "An entrepreneur and visionary whose passion for youth development and academic integrity inspired the establishment of OBF. With years of experience in community engagement and business leadership.",
-      image: undefined,
+      bio: "He is an entrepreneur and visionary whose passion for youth development and academic integrity inspired the establishment of OBF. With years of experience in community engagement and business leadership, he provides strategic support to the Foundation’s operations and long-term growth. His lived experience, community connections, and dedication to ethical values continue to shape the strategic direction and impact of the Foundation.",
+      image: olorunyomiImg,
     },
     {
       name: "Ifeoluwa Olaitan Babatunde",
       role: "Treasurer and Trustee",
-      bio: "A seasoned accountant with vast experience in financial management and internal controls. She oversees the Foundation's treasury, ensuring transparency, accountability, and compliance with non-profit financial standards.",
-      image: mrsBabatunde,
+      bio: "She is a seasoned accountant with vast experience in financial management and internal controls. She oversees the Foundation’s treasury, ensuring transparency, accountability, and compliance with non-profit financial standards. Her expertise strengthens OBF’s financial governance systems.",
+      image: ifeoluwaImg,
     },
     {
       name: "Sikiru Akinyeye Ahmed",
       role: "Trustee",
-      bio: "A lecturer and education professional with a strong commitment to youth development and ethical learning environments. His academic background enhances the Foundation's ability to design impactful school-based programmes.",
-      image: undefined,
+      bio: "He is a lecturer and education professional with a strong commitment to youth development and ethical learning environments. His academic background and passion for reforming education systems enhance the Foundation’s ability to design impactful school-based programmes.",
+      image: sikiruImg,
     },
     {
       name: "Funwape Oyinkansola Motunrayo",
       role: "Trustee",
-      bio: "An entrepreneur with a strong background in business operations and community development. She brings innovative thinking and organisational skills to OBF's governance structures and project planning processes.",
-      image: undefined,
+      bio: "She is a Chartered Accountant and an entrepreneur with a strong background in business operations and community development. She brings analytical depth, innovative thinking, and organisational excellence to OBF’s governance structures and project planning processes.",
+      image: funwapeImg,
     },
     {
       name: "Olalekan Samson Babatunde",
       role: "Secretary, Non-Trustee",
-      bio: "An educator with experience in school administration and youth mentoring. As Secretary, he supports the Board by managing documentation, correspondence, and governance processes.",
-      image: undefined,
+      bio: "He is an educator with experience in school administration and youth mentoring. As Secretary, he supports the Board by managing documentation, correspondence, and governance processes.",
+      image: olalekanImg,
     },
   ];
 
@@ -417,7 +424,7 @@ const Home = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Support Our Work — Donate to OBF</h2>
-              
+
               {/* Make a Donation */}
               <Card className="border-none shadow-lg mb-12 bg-background/10">
                 <CardContent className="p-8 md:p-12">
@@ -476,7 +483,7 @@ const Home = () => {
         </section>
 
         {/* Contact section intentionally omitted to comply with requested exact order */}
-        
+
         {/* SECTION 12: FAQs (moved to be the last section before the footer) */}
         <section id="faq" className="py-16 bg-muted">
           <div className="container mx-auto px-4">

@@ -6,6 +6,7 @@ import { client } from "@/sanity/client";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import logo from "@/assets/logo.png";
 
 type SanityArticle = {
   _id: string;
@@ -14,6 +15,7 @@ type SanityArticle = {
   bodyText?: string;
   publishedAt?: string;
   slug?: string;
+  mainImage?: string | null;
 };
 
 const query = `*[_type in ["post","article","editorial"] && defined(slug.current)] | order(publishedAt desc) {
@@ -22,7 +24,8 @@ const query = `*[_type in ["post","article","editorial"] && defined(slug.current
   "excerpt": coalesce(excerpt, pt::text(body)[0...300]),
   "bodyText": pt::text(body),
   publishedAt,
-  "slug": slug.current
+  "slug": slug.current,
+  "mainImage": coalesce(mainImage.asset->url, image.asset->url)
 }`;
 
 export default function EditorialClean() {
@@ -84,11 +87,18 @@ export default function EditorialClean() {
 
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((article) => (
-            <Card key={article._id} className="border-none shadow-md">
-              <CardContent className="p-6">
+            <Card key={article._id} className="border-none shadow-md overflow-hidden flex flex-col">
+              <div className="aspect-video w-full overflow-hidden bg-muted">
+                <img
+                  src={article.mainImage || logo}
+                  alt={article.title || "Article image"}
+                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                />
+              </div>
+              <CardContent className="p-6 flex-1 flex flex-col">
                 <h2 className="text-lg font-semibold">{article.title}</h2>
                 <p className="text-sm text-muted-foreground mt-1">{article.publishedAt?.slice(0, 10)}</p>
-                <p className="mt-3 text-muted-foreground" style={{
+                <p className="mt-3 text-muted-foreground flex-1" style={{
                   display: "-webkit-box",
                   WebkitLineClamp: 4,
                   WebkitBoxOrient: "vertical",
